@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import useAnimatedCanvas from '../hooks/useAnimatedCanvas'
 
 const AnimatedBackground = () => {
