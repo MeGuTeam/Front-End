@@ -29,7 +29,7 @@ const Hero = () => {
             className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
             variants={heroVariants}
           >
-            {heroData.headline}
+            {heroData.headline}{` `}
             <motion.span
               className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent"
               animate={{
