@@ -6,6 +6,8 @@ import AnimatedBackground from '@/features/landing/components/AnimatedBackground
 import TeamsSection from '@/features/landing/components/Team';
 import Hero from '@/features/landing/components/Hero';
 import Feature from '@/features/landing/components/Feature';
+import FrequentlyAskedQuestion from '@/features/landing/components/FrequentlyAskedQuestion';
+import Footer from '@/features/landing/components/Footer';
 
 export default function Home() {
   return (
@@ -17,6 +19,10 @@ export default function Home() {
       <Feature />
 
       <TeamsSection />
+
+      <FrequentlyAskedQuestion />
+
+      <Footer />
 
       <motion.div
         className="fixed bottom-0 left-0 w-full h-36 bg-gradient-to-t from-slate-900 to-transparent pointer-events-none"

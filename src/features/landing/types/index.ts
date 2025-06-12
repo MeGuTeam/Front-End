@@ -44,3 +44,32 @@ export interface HeroData {
   highlight: string;
   description: string;
 }
+
+export interface FaqData {
+  id: number;
+  question: string;
+  answer: string;
+}
+
+export interface NavigationLink {
+  name: string;
+  href: string;
+  icon: React.ReactNode;
+}
+
+export interface ContactInfo {
+  type: 'email' | 'phone';
+  value: string;
+  icon: React.ReactNode;
+}
+
+export interface LegalLink {
+  name: string;
+  href: string;
+}
+
+export interface FooterSection {
+  title: string;
+  links: NavigationLink[] | LegalLink[];
+  color: string;
+}

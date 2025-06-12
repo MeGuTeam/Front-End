@@ -88,3 +88,40 @@ export const featureGridVariants = {
     },
   },
 };
+
+export const footerVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      staggerChildren: 0.1
+    }
+  }
+};
+
+export const footerItemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5 }
+  }
+};
+
+export const linkHoverVariants = {
+  hover: { 
+    x: 5,
+    transition: { duration: 0.2 }
+  },
+  tap: { scale: 0.98 }
+};
+
+export const contactHoverVariants = {
+  hover: { 
+    scale: 1.02,
+    transition: { duration: 0.2 }
+  },
+  tap: { scale: 0.98 }
+};
