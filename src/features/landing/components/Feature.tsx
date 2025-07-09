@@ -6,7 +6,7 @@ import { featureData } from '../data/featureData';
 const Feature = () => {
   return (
     <motion.section
-        className="relative z-10 container mx-auto px-6 py-16"
+        className="relative z-10 container mx-auto h-svh flex flex-col justify-center items-center"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
@@ -14,18 +14,19 @@ const Feature = () => {
       >
         <motion.div className="text-center mb-16" variants={itemVariants}>
           <motion.h2
-            className="text-4xl md:text-5xl font-bold text-white mb-4"
+            className="text-4xl md:text-5xl font-extrabold text-white mb-4"
             variants={itemVariants}
           >
-            Fitur Unggulan
+            Tingkatkan Skill Jepang-mu Sekarang
           </motion.h2>
           <motion.p
-            className="text-xl text-gray-300 max-w-2xl mx-auto"
+            className="text-lg md:text-xl text-muted-foreground mx-auto"
             variants={itemVariants}
           >
-            Belajar bahasa Jepang dengan metode yang telah terbukti efektif
+            Kuasai bahasa Jepang dengan fitur-fitur interaktif yang dirancang untuk hasil nyata, efektif, menyenangkan, dan terstruktur.
           </motion.p>
         </motion.div>
+
 
         <motion.div
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"
@@ -35,28 +36,22 @@ const Feature = () => {
             <motion.div
               key={index}
               variants={itemVariants}
-              whileHover={{
-                y: -10,
-                transition: { duration: 0.3 },
-              }}
             >
-              <div 
-                className="group relative p-6 rounded-2xl backdrop-blur-sm border border-white/10 hover:border-blue-400/30 transition-all duration-500"
-                style={{
-                    background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.05) 100%)',
-                    animationDelay: '0ms'
-                }}
-                >
-                    <div className="text-4xl mb-4 transition-transform duration-300">
-                    {feature.icon}
-                    </div>
-                    <h3 className="text-xl font-bold text-white mb-2 group-hover:text-blue-300 transition-colors">
+              <div className="relative group p-6 rounded-2xl backdrop-blur-sm border border-white/10 overflow-hidden transition duration-500 hover:border-white/15">
+                  <div className='border-t border-white/10 w-80 absolute rotate-10 top-5 right-0 z-10'></div>
+                  <div className='border-t border-white/10 w-96 absolute rotate-10 top-10 right-0 z-10'></div>
+                  <div className='border-t border-white/5 w-96 absolute rotate-10 top-15 right-0 z-10'></div>
+                  <div className='rounded-full bg-white w-16 h-16 absolute -bottom-30 left-20 blur-3xl'></div>
+                  <div className="absolute -bottom-30 left-20 w-20 h-24 rounded-full bg-white blur-3xl opacity-20 group-hover:opacity-60 transition duration-500" />
+
+
+                  <h3 className="text-xl font-bold text-white mb-2">
                     {feature.title}
-                    </h3>
-                    <p className="text-gray-300 text-sm leading-relaxed">
+                  </h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">
                     {feature.description}
-                    </p>
-                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
+                  </p>
+                    
                     </div>
                 </motion.div>
             ))}

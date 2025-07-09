@@ -15,8 +15,8 @@ const FrequentlyAskedQuestion = () => {
   };
 
   return (
-    <div className="my-24 lg:mt-24 lg:mb-48 p-8">
-      <div className="max-w-4xl mx-auto">
+    <div className="min-h-svh flex justify-center items-center mx-auto relative">
+      <div className="max-w-4xl w-full">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -26,17 +26,18 @@ const FrequentlyAskedQuestion = () => {
           <h1 className="text-4xl font-bold text-white mb-4">
             Frequently Asked Questions
           </h1>
-          <p className="text-gray-300 text-lg">
+          <p className="text-muted-foreground text-lg">
             Temukan jawaban atas pertanyaan yang sering diajukan
           </p>
         </motion.div>
 
         <motion.div 
-          className="rounded-lg shadow-lg p-8 bg-white/5 backdrop-blur-sm border border-white/10"
+          className="rounded-lg shadow-lg p-8 bg-transparent relative overflow-hidden backdrop-blur-sm border border-white/10"
           variants={itemVariantsTs}
           initial="hidden"
           animate="visible"
         >
+          <div className='rounded-full bg-white w-12 h-12 absolute -top-24 right-0 blur-3xl'></div>
           <motion.div 
             className="space-y-2"
             variants={containerVariants}
@@ -49,20 +50,20 @@ const FrequentlyAskedQuestion = () => {
               return (
                 <motion.div 
                   key={faq.id}
-                  className="border-b border-gray-200/20 py-4 last:border-b-0"
+                  className="border-b border-gray-200/20 py-4 last:border-b-0 bg-transparent relative overflow-hidden"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: faq.id * 0.1, duration: 0.5 }}
                 >
                   <button
                     onClick={() => toggleItem(faq.id)}
-                    className="flex justify-between items-center w-full text-left font-medium text-lg hover:text-blue-400 transition-colors duration-200 group"
+                    className="flex justify-between items-center w-full text-left font-medium text-lg group hover:cursor-pointer"
                   >
-                    <span className="pr-4 text-white group-hover:text-blue-400 transition-colors duration-200">
+                    <span className="pr-4 text-white transition-colors duration-200">
                       {faq.question}
                     </span>
                     <FaChevronDown
-                      className={`transition-transform duration-300 flex-shrink-0 text-gray-300 group-hover:text-blue-400 ${
+                      className={`transition-transform duration-300 flex-shrink-0 text-white ${
                         isOpen ? 'rotate-180' : ''
                       }`}
                     />
@@ -76,15 +77,19 @@ const FrequentlyAskedQuestion = () => {
                         animate={{ opacity: 1, height: 'auto' }}
                         exit={{ opacity: 0, height: 0 }}
                         transition={{ duration: 0.3, ease: "easeInOut" }}
-                        className="overflow-hidden"
+                        className="overflow-hidden relative w-full"
                       >
                         <motion.div 
-                          className="mt-4 text-gray-300 leading-relaxed bg-white/5 rounded-lg p-4 border-l-4 border-blue-400"
+                          className="mt-4 text-neutral-300 leading-relaxed rounded-lg p-4 border-l-2 border-white/50 overflow-hidden relative w-full"
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
                           transition={{ delay: 0.1 }}
                         >
-                          <p>{faq.answer}</p>
+                            <div className='border-t border-white/5 w-[25rem] absolute rotate-15 bottom-12 right-1'></div>
+                            <div className='border-t border-white/10 w-[25rem] absolute rotate-15 bottom-16 right-2'></div>
+                            <div className='border-t border-white/10 w-[25rem] absolute rotate-15 bottom-20 right-3'></div>
+                            
+                          <p className="relative z-10">{faq.answer}</p>
                         </motion.div>
                       </motion.div>
                     )}
@@ -99,4 +104,4 @@ const FrequentlyAskedQuestion = () => {
   );
 };
 
-export default FrequentlyAskedQuestion
+export default FrequentlyAskedQuestion;

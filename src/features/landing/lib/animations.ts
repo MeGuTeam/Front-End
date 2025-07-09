@@ -1,4 +1,6 @@
-export const containerVariants = {
+import type { Variants } from 'framer-motion';
+
+export const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -9,7 +11,7 @@ export const containerVariants = {
   },
 };
 
-export const itemVariants = {
+export const itemVariants: Variants = {
   hidden: { opacity: 0, y: 30, scale: 0.95 },
   visible: {
     opacity: 1,
@@ -19,7 +21,7 @@ export const itemVariants = {
   },
 };
 
-export const itemVariantsTs = {
+export const itemVariantsTs: Variants = {
   hidden: { 
     opacity: 0, 
     y: 20 
@@ -34,7 +36,7 @@ export const itemVariantsTs = {
   },
 };
 
-export const heroVariants = {
+export const heroVariants: Variants = {
   hidden: { opacity: 0, y: 50 },
   visible: {
     opacity: 1,
@@ -43,7 +45,7 @@ export const heroVariants = {
   },
 };
 
-export const badgeContainerVariants = {
+export const badgeContainerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -54,7 +56,7 @@ export const badgeContainerVariants = {
   },
 };
 
-export const badgeVariants = {
+export const badgeVariants: Variants = {
   hidden: { opacity: 0, scale: 0.8, y: 20 },
   visible: {
     opacity: 1,
@@ -64,7 +66,7 @@ export const badgeVariants = {
   },
 };
 
-export const buttonVariants = {
+export const buttonVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
@@ -78,7 +80,7 @@ export const buttonVariants = {
   tap: { scale: 0.98 },
 };
 
-export const featureGridVariants = {
+export const featureGridVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -89,7 +91,7 @@ export const featureGridVariants = {
   },
 };
 
-export const footerVariants = {
+export const footerVariants: Variants = {
   hidden: { opacity: 0, y: 50 },
   visible: {
     opacity: 1,
@@ -101,7 +103,7 @@ export const footerVariants = {
   }
 };
 
-export const footerItemVariants = {
+export const footerItemVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
@@ -110,7 +112,7 @@ export const footerItemVariants = {
   }
 };
 
-export const linkHoverVariants = {
+export const linkHoverVariants: Variants = {
   hover: { 
     x: 5,
     transition: { duration: 0.2 }
@@ -118,7 +120,7 @@ export const linkHoverVariants = {
   tap: { scale: 0.98 }
 };
 
-export const contactHoverVariants = {
+export const contactHoverVariants: Variants = {
   hover: { 
     scale: 1.02,
     transition: { duration: 0.2 }

@@ -36,21 +36,21 @@ export const useTeamSlider = () => {
       },
     },
     loop: true,
-    created(s) {
-      s.container.style.transitionDuration = '800ms';
-      s.container.style.transitionTimingFunction =
-        'cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+    mode: "snap",
+    defaultAnimation: {
+      duration: 800,
+      easing: (t: number) => 1 - Math.pow(1 - t, 3)
     },
   });
 
   useEffect(() => {
     const interval = setInterval(() => {
-      if (!isHovered) {
-        instanceRef.current?.next();
+      if (!isHovered && instanceRef.current) {
+        instanceRef.current.next();
       }
     }, 4000);
     return () => clearInterval(interval);
-  }, [isHovered]);
+  }, [isHovered, instanceRef]);
 
   const handleMouseEnter = () => {
     setIsHovered(true);

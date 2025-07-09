@@ -27,7 +27,6 @@ export interface TeamMember {
 }
 
 export interface FeatureData {
-  icon: string;
   title: string;
   description: string;
 }
@@ -36,13 +35,6 @@ export interface LevelBadge {
   level: string;
   description: string;
   color: string;
-}
-
-export interface HeroData {
-  title: string;
-  headline: string;
-  highlight: string;
-  description: string;
 }
 
 export interface FaqData {

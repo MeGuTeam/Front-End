@@ -4,8 +4,8 @@ const teamMembers: TeamMember[] = [
   {
     id: "rifqi",
     name: "Rifqi Alisba Garjita Sutrisno",
-    role: ["Project Manager", "Backend Engineer"],
-    photo: "/dummyFoto.jpg",
+    role: ["Tech Lead", "Backend Engineer"],
+    photo: "/RifqiAlisbaGarwitaSutrisno.jpg",
     linkedin: "#",
     github: "#"
   },
@@ -13,7 +13,7 @@ const teamMembers: TeamMember[] = [
     id: "andi",
     name: "Andi",
     role: ["Desktop Engineer", "Mobile Engineer"],
-    photo: "/dummyFoto.jpg",
+    photo: "/AndiFaqriyaPutraPurnama.jpg",
     linkedin: "#",
     github: "#"
   },
@@ -21,7 +21,7 @@ const teamMembers: TeamMember[] = [
     id: "daffa",
     name: "Daffa",
     role: ["Machine Learning Engineer"],
-    photo: "/dummyFoto.jpg",
+    photo: "/DaffaAlGhifariSufyan.jpg",
     linkedin: "#",
     github: "#"
   },
@@ -29,7 +29,7 @@ const teamMembers: TeamMember[] = [
     id: "rafi",
     name: "Rafi Alisba Garjita Sutrisno",
     role: ["UI UX", "Front End Engineer"],
-    photo: "/dummyFoto.jpg",
+    photo: "/RafiAlisbaGarjitaSutrisno.jpg",
     linkedin: "#",
     github: "#"
   }
