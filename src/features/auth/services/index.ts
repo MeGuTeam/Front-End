@@ -3,7 +3,7 @@ import { setToken, getToken, removeToken, isTokenExpired, setUserId, removeUserI
 
 export async function loginAuth(username: string, password: string) {
     try {
-        const res = await api.post("/login", { username, password });
+        const res = await api.post("/auth/login", { username, password });
         console.log("Login register: ", res);
         
         const token = res.data.data.token;
@@ -21,7 +21,7 @@ export async function loginAuth(username: string, password: string) {
 
 export async function registerAuth(username: string, password: string) {
     try {
-        const res = await api.post("/register", { username, password });
+        const res = await api.post("/auth/register", { username, password });
         console.log("Register Berhasil: ", res);
         return res;
     } catch (error) {
