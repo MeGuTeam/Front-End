@@ -24,6 +24,7 @@ const HiraganaPages = () => {
     try {
       setLoading(true);
       const data = await getHiragana(setUpdatedData);
+      console.log(data);
       setHiragana(data);
     } catch (err) {
       setError('Data tidak ditemukan');

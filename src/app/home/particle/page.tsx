@@ -11,9 +11,10 @@ import { IoBookOutline } from "react-icons/io5";
 import { TbMessageDots } from 'react-icons/tb';
 import { HiOutlineLightBulb } from "react-icons/hi";
 import { AiOutlineLoading } from 'react-icons/ai';
+import { ParticleData } from '@/features/home/types/materidasar';
 
 const ParticlesPage = () => {
-  const [particles, setParticles] = useState<any[]>([]);
+  const [particles, setParticles] = useState<ParticleData[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [updatedData, setUpdatedData] = useState(false);

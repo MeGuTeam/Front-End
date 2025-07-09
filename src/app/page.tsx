@@ -14,7 +14,6 @@ import {
   heroVariants, 
   buttonVariants,
   featureGridVariants,
-  footerVariants,
   footerItemVariants,
   linkHoverVariants,
   contactHoverVariants,

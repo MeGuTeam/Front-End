@@ -11,9 +11,10 @@ import { IoBookOutline } from "react-icons/io5";
 import { TbMessageDots, TbLanguage } from 'react-icons/tb';
 import { HiOutlineSparkles } from "react-icons/hi";
 import { AiOutlineLoading } from 'react-icons/ai';
+import { BasicConversationData } from '@/features/home/types/materidasar';
 
 const BasicConversationPages = () => {
-  const [conversations, setConversations] = useState<any[]>([]);
+  const [conversations, setConversations] = useState<BasicConversationData[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [updatedData, setUpdatedData] = useState(false);
@@ -24,6 +25,7 @@ const BasicConversationPages = () => {
     try {
       setLoading(true);
       const data = await getBasicConversation(setUpdatedData);
+      console.log(data)
       setConversations(data);
     } catch (err) {
       setError('Data tidak ditemukan');

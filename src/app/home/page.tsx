@@ -7,10 +7,14 @@ import { kelasTampilanDepan, levelMateri } from '@/features/home/data';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { trackerHome } from '@/features/home/services/tracker';
+import { LastActivity } from '@/features/home/types/home';
 
-// TODO: useEffect jalan ketika component tampil dengan user ngeklik breadcrumb tidak dengan back
 const HomePage = () => {
-  const [tracker, setTracker] = useState({
+  const [tracker, setTracker] = useState<{
+    lastActivity: LastActivity | null;
+    error: string | null;
+    loading: boolean;
+  }>({
     lastActivity: null,
     error: null,
     loading: true,

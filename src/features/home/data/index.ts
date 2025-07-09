@@ -1,4 +1,4 @@
-import { KelasTampilanDepan, LevelMateri, DaftarMateriN5 } from "../types"
+import { KelasTampilanDepan, LevelMateri, DaftarMateriN5 } from "../types/home"
 
 export const kelasTampilanDepan: KelasTampilanDepan[] = [
     {

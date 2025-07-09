@@ -1,3 +1,12 @@
+export interface LastActivity {
+  type: string;
+  finished: number;
+  total: number;
+  lastProgress: string;
+  href: string;
+  subCategory: string | null;
+}
+
 export type KelasTampilanDepan = {
     alt: string;
     title: string;
