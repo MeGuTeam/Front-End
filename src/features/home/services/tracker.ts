@@ -15,7 +15,7 @@ export const trackerParticle = async (id: number, status: boolean, setterUpdated
             "particle_id": id,
             "status": status,
         });
-        setterUpdatedData(true);
+        setterUpdatedData(false);
         return res;
     } catch (e) {
         console.error("Operasi perbaharuan data gagal: ", e);
@@ -28,7 +28,7 @@ export const trackerKatakana = async (id: number, status: boolean, setterUpdated
             "katakana_id": id,
             "status": status,
         });
-        setterUpdatedData(true);
+        setterUpdatedData(false);
         return res;
     } catch (e) {
         console.error("Operasi perbaharuan data gagal: ", e);
@@ -41,7 +41,7 @@ export const trackerHiragana = async (id: number, status: boolean, setterUpdated
             "hiragana_id": id,
             "status": status,
         });
-        setterUpdatedData(true);
+        setterUpdatedData(false);
         return res;
     } catch (e) {
         console.error("Operasi perbaharuan data gagal: ", e);
@@ -54,7 +54,7 @@ export const trackerBasicCnversation = async (id: number, status: boolean, sette
             "basic_conversation_id": id,
             "status": status,
         });
-        setterUpdatedData(true);
+        setterUpdatedData(false);
         return res;
     } catch (e) {
         console.error("Operasi perbaharuan data gagal: ", e);
@@ -67,7 +67,7 @@ export const trackerKanjiN5 = async (kanjiId: number, currentStatus: boolean, se
             "kanji_id": kanjiId,
             "status": currentStatus,
         });
-        setterUpdatedData(true);
+        setterUpdatedData(false);
         return res;
     } catch (e) {
         console.error("Pengambilan data gagal - ", e);
@@ -80,7 +80,7 @@ export const trackerAdjectiveN5 = async (adjectiveId: number, currentStatus: boo
             "adjective_id": adjectiveId,
             "status": currentStatus,
         });
-        setterUpdatedData(true);
+        setterUpdatedData(false);
         return res;
     } catch (e) {
         console.error("Pengambilan data gagal - ", e);
@@ -93,7 +93,7 @@ export const trackerAdverb = async (adverbId: number, currentStatus: boolean, se
             "other_word_id": adverbId,
             "status": currentStatus,
         });
-        setterUpdatedData(true);
+        setterUpdatedData(false);
         return res;
     } catch (e) {
         console.error("Update status gagal - ", e);
@@ -106,7 +106,7 @@ export const trackerVerb = async (verbId: number, currentStatus: boolean, setter
             "verb_id": verbId,
             "status": currentStatus,
         });
-        setterUpdatedData(true);
+        setterUpdatedData(false);
         return res;
     } catch (e) {
         console.error("Update status gagal - ", e);
@@ -119,7 +119,7 @@ export const trackerConjunction = async (conjunctionId: number, currentStatus: b
             "conjunction_id": conjunctionId,
             "status": currentStatus,
         });
-        setterUpdatedData(true);
+        setterUpdatedData(false);
         return res;
     } catch (e) {
         console.error("Update status gagal - ", e);
@@ -132,7 +132,7 @@ export const trackerQuestionWord = async (questionWordId: number, currentStatus:
             "other_word_id": questionWordId,
             "status": currentStatus,
         });
-        setterUpdatedData(true);
+        setterUpdatedData(false);
         return res;
     } catch (e) {
         console.error("Update status gagal - ", e);
@@ -145,7 +145,7 @@ export const trackerNounActivity = async (activityId: number, currentStatus: boo
             "noun_id": activityId,
             "status": currentStatus,
         });
-        setterUpdatedData(true);
+        setterUpdatedData(false);
         return res;
     } catch (e) {
         console.error("Update status gagal - ", e);
@@ -158,7 +158,7 @@ export const trackerNounAnimalAndPlant = async (animalAndPlantId: number, curren
             "noun_id": animalAndPlantId,
             "status": currentStatus,
         });
-        setterUpdatedData(true);
+        setterUpdatedData(false);
         return res;
     } catch (e) {
         console.error("Update status gagal - ", e);
@@ -171,7 +171,7 @@ export const trackerNounAuxNumber = async (auxNumberId: number, currentStatus: b
             "noun_id": auxNumberId,
             "status": currentStatus,
         });
-        setterUpdatedData(true);
+        setterUpdatedData(false);
         return res;
     } catch (e) {
         console.error("Update status gagal - ", e);
@@ -184,7 +184,7 @@ export const trackerNounBody = async (bodyId: number, currentStatus: boolean, se
             "noun_id": bodyId,
             "status": currentStatus,
         });
-        setterUpdatedData(true);
+        setterUpdatedData(false);
         return res;
     } catch (e) {
         console.error("Update status gagal - ", e);
@@ -197,7 +197,7 @@ export const trackerNounCity = async (cityId: number, currentStatus: boolean, se
             "noun_id": cityId,
             "status": currentStatus,
         });
-        setterUpdatedData(true);
+        setterUpdatedData(false);
         return res;
     } catch (e) {
         console.error("Update status gagal - ", e);
@@ -210,7 +210,7 @@ export const trackerNounColor = async (colorId: number, currentStatus: boolean, 
             "noun_id": colorId,
             "status": currentStatus,
         });
-        setterUpdatedData(true);
+        setterUpdatedData(false);
         return res;
     } catch (e) {
         console.error("Update status gagal - ", e);
@@ -223,7 +223,7 @@ export const trackerNounFoodAndDrink = async (foodAndDrinkId: number, currentSta
             "noun_id": foodAndDrinkId,
             "status": currentStatus,
         });
-        setterUpdatedData(true);
+        setterUpdatedData(false);
         return res;
     } catch (e) {
         console.error("Update status gagal - ", e);
@@ -236,7 +236,7 @@ export const trackerNounHomeAppliances = async (homeappliancesId: number, curren
             "noun_id": homeappliancesId,
             "status": currentStatus,
         });
-        setterUpdatedData(true);
+        setterUpdatedData(false);
         return res;
     } catch (e) {
         console.error("Update status gagal - ", e);
@@ -249,7 +249,7 @@ export const trackerNounKosoado = async (kosoadoId: number, currentStatus: boole
             "noun_id": kosoadoId,
             "status": currentStatus,
         });
-        setterUpdatedData(true);
+        setterUpdatedData(false);
         return res;
     } catch (e) {
         console.error("Update status gagal - ", e);
@@ -262,7 +262,7 @@ export const trackerNounMedia = async (mediaId: number, currentStatus: boolean, 
             "noun_id": mediaId,
             "status": currentStatus,
         });
-        setterUpdatedData(true);
+        setterUpdatedData(false);
         return res;
     } catch (e) {
         console.error("Update status gagal - ", e);
@@ -275,7 +275,7 @@ export const trackerNounNatural = async (naturalId: number, currentStatus: boole
             "noun_id": naturalId,
             "status": currentStatus,
         });
-        setterUpdatedData(true);
+        setterUpdatedData(false);
         return res;
     } catch (e) {
         console.error("Update status gagal - ", e);
@@ -288,7 +288,7 @@ export const trackerNounNumber = async (numberId: number, currentStatus: boolean
             "noun_id": numberId,
             "status": currentStatus,
         });
-        setterUpdatedData(true);
+        setterUpdatedData(false);
         return res;
     } catch (e) {
         console.error("Update status gagal - ", e);
@@ -301,7 +301,7 @@ export const trackerNounOutfit = async (outfitId: number, currentStatus: boolean
             "noun_id": outfitId,
             "status": currentStatus,
         });
-        setterUpdatedData(true);
+        setterUpdatedData(false);
         return res;
     } catch (e) {
         console.error("Update status gagal - ", e);
@@ -314,7 +314,7 @@ export const trackerNounPeople = async (peopleId: number, currentStatus: boolean
             "noun_id": peopleId,
             "status": currentStatus,
         });
-        setterUpdatedData(true);
+        setterUpdatedData(false);
         return res;
     } catch (e) {
         console.error("Update status gagal - ", e);
@@ -327,7 +327,7 @@ export const trackerNounPosition = async (positionId: number, currentStatus: boo
             "noun_id": positionId,
             "status": currentStatus,
         });
-        setterUpdatedData(true);
+        setterUpdatedData(false);
         return res;
     } catch (e) {
         console.error("Update status gagal - ", e);
@@ -340,7 +340,7 @@ export const trackerNounRegion = async (regionId: number, currentStatus: boolean
             "noun_id": regionId,
             "status": currentStatus,
         });
-        setterUpdatedData(true);
+        setterUpdatedData(false);
         return res;
     } catch (e) {
         console.error("Update status gagal - ", e);
@@ -353,7 +353,7 @@ export const trackerNounSchool = async (schoolId: number, currentStatus: boolean
             "noun_id": schoolId,
             "status": currentStatus,
         });
-        setterUpdatedData(true);
+        setterUpdatedData(false);
         return res;
     } catch (e) {
         console.error("Update status gagal - ", e);
@@ -366,7 +366,7 @@ export const trackerNounTime = async (timeId: number, currentStatus: boolean, se
             "noun_id": timeId,
             "status": currentStatus,
         });
-        setterUpdatedData(true);
+        setterUpdatedData(false);
         return res;
     } catch (e) {
         console.error("Update status gagal - ", e);
@@ -379,7 +379,7 @@ export const trackerNounTraffic = async (trafficId: number, currentStatus: boole
             "noun_id": trafficId,
             "status": currentStatus,
         });
-        setterUpdatedData(true);
+        setterUpdatedData(false);
         return res;
     } catch (e) {
         console.error("Update status gagal - ", e);
@@ -392,7 +392,7 @@ export const trackerNounWork = async (workId: number, currentStatus: boolean, se
             "noun_id": workId,
             "status": currentStatus,
         });
-        setterUpdatedData(true);
+        setterUpdatedData(false);
         return res;
     } catch (e) {
         console.error("Update status gagal - ", e);
