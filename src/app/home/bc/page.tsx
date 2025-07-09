@@ -25,7 +25,6 @@ const BasicConversationPages = () => {
     try {
       setLoading(true);
       const data = await getBasicConversation(setUpdatedData);
-      console.log(data)
       setConversations(data);
     } catch (err) {
       setError('Data tidak ditemukan');

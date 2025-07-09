@@ -9,42 +9,48 @@ import { useRouter } from 'next/navigation';
 import { MdAccessTime, MdCheckCircle } from "react-icons/md";
 import { IoBookOutline } from "react-icons/io5";
 import { TbLetterCase, TbLanguage } from 'react-icons/tb';
-import { HiOutlineSparkles } from "react-icons/hi";
 import { RiTranslate } from "react-icons/ri";
+import { KanjiData } from '@/features/home/types/materin5';
+import { AiOutlineLoading } from 'react-icons/ai';
 
 const KanjiN5Page = () => {
-    const [kanjiN5, setKanjiN5] = useState<any[]>([]);
+    const [kanjiN5, setKanjiN5] = useState<KanjiData[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
+    const [updatedData, setUpdatedData] = useState(false);
+    const [updating, setUpdating] = useState<number | null>(null);
     const router = useRouter();
 
-    useEffect(() => {
-      const fetchKanjiN5 = async () => {
-        try {
-          const data = await getKanjiN5();
-          console.log("Data yang didapat dari page kanjin5: ", data);
-          setKanjiN5(data);
-        } catch (e) {
-          setError("Data tidak ditemukan");
-        } finally {
-          setLoading(false);
-        }
+    const fetchKanjiN5 = async (setUpdatedData: React.Dispatch<React.SetStateAction<boolean>>) => {
+      try {
+        setLoading(true);
+        const data = await getKanjiN5(setUpdatedData);
+        setKanjiN5(data);
+      } catch (e) {
+        setError("Data tidak ditemukan");
+        console.error(e);
+      } finally {
+        setLoading(false);
       }
-      fetchKanjiN5();
-    }, []);
+    };
+
+    useEffect(() => {
+      if (updatedData === false) {
+        fetchKanjiN5(setUpdatedData);
+        setLoading(false);
+      }
+    }, [updatedData]);
 
     const handleKanjiN5Click = async (kanjiN5Id: number, currentStatus: boolean) => {
       try {
-        const newStatus = !currentStatus;
-        await trackerKanjiN5(kanjiN5Id, newStatus);
-
-        setKanjiN5(prev => prev.map(data =>
-          data.id === kanjiN5Id ? { ...data, status: newStatus} : data
-        ));
+        setUpdating(kanjiN5Id);
+        await trackerKanjiN5(kanjiN5Id, currentStatus, setUpdatedData);
       } catch (e) {
         console.error("Failed to update kanji status: ", e);
+      } finally {
+        setUpdating(null);
       }
-    }
+    };
 
     const completedCount = kanjiN5.filter(p => p.status).length;
     const progressPercentage = kanjiN5.length > 0 ? (completedCount / kanjiN5.length) * 100 : 0;
@@ -196,19 +202,28 @@ const KanjiN5Page = () => {
                         )}
 
                         {/* Status */}
-                        <div className="mt-4 pt-4 border-t border-white/10">
-                          {data.status ? (
-                            <div className='flex gap-1.5 text-green-400 items-center justify-center'>
-                              <MdCheckCircle className="w-4 h-4" />
-                              <span className="text-xs font-medium">Sudah dipelajari</span>
-                            </div>
-                          ) : (
-                            <div className='flex gap-1.5 text-yellow-400 items-center justify-center'>
-                              <MdAccessTime className="w-4 h-4" />
-                              <span className="text-xs font-medium">Belum dipelajari</span>
-                            </div>
-                          )}
-                        </div>
+                        <div className="mt-4 pt-3 border-t border-white/10">
+                          {updating === data.id ? (
+                            <div className='flex items-center justify-center text-sm text-white gap-2'>
+                              <AiOutlineLoading className="animate-spin w-4 h-4" />
+                              <p className='text-white/80 font-medium'>Memperbarui...</p>
+                                                  </div>
+                                                ) : (
+                                                  <div>
+                                                    {data.status ? (
+                                                        <div className='flex gap-1.5 text-green-400 items-center justify-center'>
+                                                            <MdCheckCircle />
+                                                            Sudah dipelajari
+                                                        </div>
+                                                    ) : (
+                                                        <div className='flex gap-1.5 text-yellow-400 items-center justify-center'>
+                                                            <MdAccessTime />
+                                                            Belum dipelajari
+                                                        </div>
+                                                    )}
+                                                  </div>
+                                                )}
+                                            </div>
                       </div>
                     </div>
                   </motion.div>

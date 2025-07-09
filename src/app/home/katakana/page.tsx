@@ -25,7 +25,6 @@ const KatakanaPages = () => {
       setLoading(true);
       const data = await getKatakana(setUpdatedData);
       setKatakana(data);
-      console.log(data)
     } catch (err) {
       setError('Data tidak ditemukan');
       console.error(err);
