@@ -36,10 +36,10 @@ export const useTeamSlider = () => {
       },
     },
     loop: true,
-    mode: "snap",
+    mode: 'snap',
     defaultAnimation: {
       duration: 800,
-      easing: (t: number) => 1 - Math.pow(1 - t, 3)
+      easing: (t: number) => 1 - Math.pow(1 - t, 3),
     },
   });
 

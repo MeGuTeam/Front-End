@@ -4,12 +4,12 @@ import React, { useEffect, useState } from 'react';
 import { getKatakana } from '@/features/home/services/data';
 import { trackerKatakana } from '@/features/home/services/tracker';
 import { motion } from 'framer-motion';
-import { FaHome } from "react-icons/fa";
+import { FaHome } from 'react-icons/fa';
 import { useRouter } from 'next/navigation';
-import { MdAccessTime, MdCheckCircle } from "react-icons/md";
-import { IoBookOutline } from "react-icons/io5";
+import { MdAccessTime, MdCheckCircle } from 'react-icons/md';
+import { IoBookOutline } from 'react-icons/io5';
 import { TbLetterCase, TbLanguage } from 'react-icons/tb';
-import { HiOutlineSparkles } from "react-icons/hi";
+import { HiOutlineSparkles } from 'react-icons/hi';
 import { AiOutlineLoading } from 'react-icons/ai';
 
 const KatakanaPages = () => {
@@ -20,7 +20,9 @@ const KatakanaPages = () => {
   const [updating, setUpdating] = useState<number | null>(null);
   const router = useRouter();
 
-  const fetchKatakana = async (setUpdatedData: React.Dispatch<React.SetStateAction<boolean>>) => {
+  const fetchKatakana = async (
+    setUpdatedData: React.Dispatch<React.SetStateAction<boolean>>
+  ) => {
     try {
       setLoading(true);
       const data = await getKatakana(setUpdatedData);
@@ -40,7 +42,10 @@ const KatakanaPages = () => {
     }
   }, [updatedData]);
 
-  const handleKatakanaClick = async (katakanaId: number, currentStatus: boolean) => {
+  const handleKatakanaClick = async (
+    katakanaId: number,
+    currentStatus: boolean
+  ) => {
     try {
       setUpdating(katakanaId);
       // Toggle status - if completed, mark as incomplete and vice versa
@@ -52,12 +57,12 @@ const KatakanaPages = () => {
     }
   };
 
-  const completedCount = katakana.filter(k => k.status).length;
-  const progressPercentage = katakana.length > 0 ? (completedCount / katakana.length) * 100 : 0;
+  const completedCount = katakana.filter((k) => k.status).length;
+  const progressPercentage =
+    katakana.length > 0 ? (completedCount / katakana.length) * 100 : 0;
 
   return (
     <div className="bg-black min-h-svh text-white pt-18">
-      
       {/* Header Section */}
       <section className="container mx-auto px-4 pt-8">
         <motion.div
@@ -65,38 +70,43 @@ const KatakanaPages = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h1 className="text-3xl font-bold mb-2">
-            Huruf Katakana
-          </h1>
-          <p className="text-white/70 text-lg">Pelajari sistem penulisan katakana untuk menguasai bahasa Jepang</p>
+          <h1 className="text-3xl font-bold mb-2">Huruf Katakana</h1>
+          <p className="text-white/70 text-lg">
+            Pelajari sistem penulisan katakana untuk menguasai bahasa Jepang
+          </p>
         </motion.div>
       </section>
 
       {/* Progress & Breadcrumb Section */}
       <section className="container mx-auto px-4 pt-6">
-        <motion.div 
+        <motion.div
           className="backdrop-blur-sm border border-white/20 rounded-xl p-6"
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
           {/* Breadcrumb */}
-          <div className='flex gap-2 items-center mb-4'>
-            <FaHome className='w-5 h-5 text-blue-400'/> 
-            <div className='flex gap-1 text-sm'>
+          <div className="flex gap-2 items-center mb-4">
+            <FaHome className="w-5 h-5 text-blue-400" />
+            <div className="flex gap-1 text-sm">
               <div className="hover:text-blue-400 cursor-pointer transition-colors">
-                <button onClick={() => router.push("/home")} className='hover:cursor-pointer'>
+                <button
+                  onClick={() => router.push('/home')}
+                  className="hover:cursor-pointer"
+                >
                   Home
                 </button>
-              </div> 
-              <span className="text-white/50">&gt;</span> 
-              <span className='text-blue-400 font-medium hover:cursor-pointer'>Katakana</span>
+              </div>
+              <span className="text-white/50">&gt;</span>
+              <span className="text-blue-400 font-medium hover:cursor-pointer">
+                Katakana
+              </span>
             </div>
           </div>
-          
+
           {/* Progress Section */}
-          <div className='flex items-center justify-between mb-3'>
-            <div className='flex items-center gap-3'>
+          <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center gap-3">
               <IoBookOutline className="w-5 h-5 text-blue-400" />
               <p className="text-white/80 font-medium">Progress Belajar Anda</p>
             </div>
@@ -106,9 +116,9 @@ const KatakanaPages = () => {
               </span>
             </div>
           </div>
-          
+
           <div className="w-full bg-white/10 rounded-full h-3 overflow-hidden">
-            <motion.div 
+            <motion.div
               className="bg-blue-500 h-3 rounded-full shadow-lg"
               initial={{ width: 0 }}
               animate={{ width: `${progressPercentage}%` }}
@@ -120,50 +130,52 @@ const KatakanaPages = () => {
           </p>
         </motion.div>
       </section>
-      
+
       {/* Katakana List Section */}
-      <section className='container px-4 mx-auto mt-8 pb-8'>
+      <section className="container px-4 mx-auto mt-8 pb-8">
         {loading && (
           <div className="flex justify-center items-center py-20">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-neutral-400"></div>
           </div>
         )}
-        
+
         {error && (
           <div className="flex items-center justify-center gap-12 border border-red-400 h-24">
-            <div className='border-t border-red-400 w-12'></div>
+            <div className="border-t border-red-400 w-12"></div>
             <div>{error}</div>
-            <div className='border-t border-red-400 w-12'></div>
+            <div className="border-t border-red-400 w-12"></div>
           </div>
         )}
 
         {!loading && !error && (
-          <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4'>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
             {katakana.map((data, index) => (
-              <motion.div 
-                key={data.id} 
-                className='group relative'
+              <motion.div
+                key={data.id}
+                className="group relative"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.05 }}
               >
-                <div 
+                <div
                   className="relative overflow-hidden border border-white/20 rounded-xl transition-all duration-300 cursor-pointer hover:border-white/40 hover:bg-white/5"
                   onClick={() => handleKatakanaClick(data.id, data.status)}
                 >
                   <div className="p-4 text-center">
                     {/* Katakana Character */}
-                    <div className='mb-3'>
+                    <div className="mb-3">
                       <h2 className="text-4xl font-bold text-white mb-1">
                         {data.character}
                       </h2>
                       {/* Type Badge */}
                       <div className="flex justify-center mb-2">
-                        <span className={`inline-flex items-center gap-1 rounded-full text-xs px-2 py-1 font-medium ${
-                          data.type === 'Gojuon' 
-                            ? 'bg-blue-100 text-blue-700' 
-                            : 'bg-purple-100 text-purple-700'
-                        }`}>
+                        <span
+                          className={`inline-flex items-center gap-1 rounded-full text-xs px-2 py-1 font-medium ${
+                            data.type === 'Gojuon'
+                              ? 'bg-blue-100 text-blue-700'
+                              : 'bg-purple-100 text-purple-700'
+                          }`}
+                        >
                           <HiOutlineSparkles className="w-3 h-3" />
                           {data.type}
                         </span>
@@ -171,36 +183,40 @@ const KatakanaPages = () => {
                     </div>
 
                     {/* Romaji */}
-                    <div className='mb-3'>
+                    <div className="mb-3">
                       <h3 className="text-xs font-semibold text-white/60 mb-1 flex items-center justify-center gap-1">
                         <TbLanguage className="w-3 h-3" />
                         Romaji
                       </h3>
-                      <p className="text-lg font-semibold text-white/90">{data.romaji}</p>
+                      <p className="text-lg font-semibold text-white/90">
+                        {data.romaji}
+                      </p>
                     </div>
 
                     {/* Status Text */}
                     <div className="mt-4 pt-3 border-t border-white/10">
-                        {updating === data.id ? (
-                          <div className='flex items-center justify-center text-sm text-white gap-2'>
-                            <AiOutlineLoading className="animate-spin w-4 h-4" />
-                            <p className='text-white/80 font-medium'>Memperbarui...</p>
-                          </div>
-                        ) : (
-                          <div>
-                            {data.status ? (
-                                <div className='flex gap-1.5 text-green-400 items-center justify-center'>
-                                    <MdCheckCircle />
-                                    Sudah dipelajari
-                                </div>
-                            ) : (
-                                <div className='flex gap-1.5 text-yellow-400 items-center justify-center'>
-                                    <MdAccessTime />
-                                    Belum dipelajari
-                                </div>
-                            )}
-                          </div>
-                        )}
+                      {updating === data.id ? (
+                        <div className="flex items-center justify-center text-sm text-white gap-2">
+                          <AiOutlineLoading className="animate-spin w-4 h-4" />
+                          <p className="text-white/80 font-medium">
+                            Memperbarui...
+                          </p>
+                        </div>
+                      ) : (
+                        <div>
+                          {data.status ? (
+                            <div className="flex gap-1.5 text-green-400 items-center justify-center">
+                              <MdCheckCircle />
+                              Sudah dipelajari
+                            </div>
+                          ) : (
+                            <div className="flex gap-1.5 text-yellow-400 items-center justify-center">
+                              <MdAccessTime />
+                              Belum dipelajari
+                            </div>
+                          )}
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -213,7 +229,9 @@ const KatakanaPages = () => {
         {!loading && !error && katakana.length === 0 && (
           <div className="text-center py-20">
             <TbLetterCase className="w-16 h-16 text-white/30 mx-auto mb-4" />
-            <p className="text-white/60 text-lg">Belum ada materi katakana tersedia</p>
+            <p className="text-white/60 text-lg">
+              Belum ada materi katakana tersedia
+            </p>
           </div>
         )}
       </section>

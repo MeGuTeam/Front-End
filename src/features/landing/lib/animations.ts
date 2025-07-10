@@ -17,21 +17,21 @@ export const itemVariants: Variants = {
     opacity: 1,
     y: 0,
     scale: 1,
-    transition: { duration: 0.6, ease: "easeOut" },
+    transition: { duration: 0.6, ease: 'easeOut' },
   },
 };
 
 export const itemVariantsTs: Variants = {
-  hidden: { 
-    opacity: 0, 
-    y: 20 
+  hidden: {
+    opacity: 0,
+    y: 20,
   },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
       duration: 0.6,
-      ease: "easeOut",
+      ease: 'easeOut',
     },
   },
 };
@@ -41,7 +41,7 @@ export const heroVariants: Variants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.8, ease: "easeOut" },
+    transition: { duration: 0.8, ease: 'easeOut' },
   },
 };
 
@@ -62,7 +62,7 @@ export const badgeVariants: Variants = {
     opacity: 1,
     scale: 1,
     y: 0,
-    transition: { duration: 0.5, ease: "backOut" },
+    transition: { duration: 0.5, ease: 'backOut' },
   },
 };
 
@@ -98,9 +98,9 @@ export const footerVariants: Variants = {
     y: 0,
     transition: {
       duration: 0.6,
-      staggerChildren: 0.1
-    }
-  }
+      staggerChildren: 0.1,
+    },
+  },
 };
 
 export const footerItemVariants: Variants = {
@@ -108,22 +108,22 @@ export const footerItemVariants: Variants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5 }
-  }
+    transition: { duration: 0.5 },
+  },
 };
 
 export const linkHoverVariants: Variants = {
-  hover: { 
+  hover: {
     x: 5,
-    transition: { duration: 0.2 }
+    transition: { duration: 0.2 },
   },
-  tap: { scale: 0.98 }
+  tap: { scale: 0.98 },
 };
 
 export const contactHoverVariants: Variants = {
-  hover: { 
+  hover: {
     scale: 1.02,
-    transition: { duration: 0.2 }
+    transition: { duration: 0.2 },
   },
-  tap: { scale: 0.98 }
+  tap: { scale: 0.98 },
 };

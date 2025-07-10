@@ -1,9 +1,9 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 @import 'keen-slider/keen-slider.min.css';
-@import "tw-animate-css";
+@import 'tw-animate-css';
 
 .bg-grid {
-  background-image: 
+  background-image:
     linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
   background-size: 80px 80px;
