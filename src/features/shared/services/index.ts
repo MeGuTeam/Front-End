@@ -11,7 +11,7 @@ export const getAvatar = async () => {
     console.log('Respon', res);
     return res;
   } catch (e) {
-    console.error('Gagal mengambil data');
+    console.error('Gagal mengambil data', e);
   }
 };
 
@@ -41,6 +41,6 @@ export const postAvatar = async () => {
     console.log('Respon', res);
     return res;
   } catch (e) {
-    console.error('Gagal mengambil data');
+    console.error('Gagal mengambil data',e);
   }
 };

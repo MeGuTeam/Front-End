@@ -11,9 +11,10 @@ import { IoBookOutline } from 'react-icons/io5';
 import { TbLetterCase, TbLanguage } from 'react-icons/tb';
 import { HiOutlineSparkles } from 'react-icons/hi';
 import { AiOutlineLoading } from 'react-icons/ai';
+import { KatakanaData } from '@/features/home/types/materidasar';
 
 const KatakanaPages = () => {
-  const [katakana, setKatakana] = useState<any[]>([]);
+  const [katakana, setKatakana] = useState<KatakanaData[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [updatedData, setUpdatedData] = useState(false);

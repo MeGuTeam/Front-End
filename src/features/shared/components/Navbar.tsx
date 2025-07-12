@@ -19,6 +19,8 @@ const Navbar = () => {
     username: '',
     avatar: '',
   });
+  const router = useRouter();
+  const dropdownRef = useRef<HTMLDivElement>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -41,12 +43,10 @@ const Navbar = () => {
     };
 
     fetchDataUser();
-  }, []);
+  }, [router]);
 
   console.log(user);
 
-  const router = useRouter();
-  const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -111,13 +111,15 @@ const Navbar = () => {
               disabled={isLoading}
             >
               <div className="relative w-8 h-8">
-                <img
-                  src={user.avatar || '/defaultprofilepicture.png'}
-                  alt="User Avatar"
-                  width={32}
-                  height={32}
-                  className="rounded-full object-cover"
-                />
+<Image
+  src={user.avatar || '/defaultprofilepicture.png'}
+  alt="User Avatar"
+  width={32}
+  height={32}
+  className="rounded-full object-cover"
+  loading="lazy"
+/>
+
               </div>
               <span className="text-white text-sm font-medium hidden sm:block">
                 {isLoading ? 'Loading...' : user.username}

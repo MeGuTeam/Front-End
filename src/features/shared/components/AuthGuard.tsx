@@ -15,7 +15,7 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
     if (!publicRoutes.includes(pathname) && !token) {
       router.replace('/login');
     }
-  }, [pathname, token]);
+  }, [pathname, token, router]);
 
   return children;
 }

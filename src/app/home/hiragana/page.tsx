@@ -11,9 +11,10 @@ import { IoBookOutline } from 'react-icons/io5';
 import { TbLetterCase, TbLanguage } from 'react-icons/tb';
 import { HiOutlineSparkles } from 'react-icons/hi';
 import { AiOutlineLoading } from 'react-icons/ai';
+import { HiraganaData } from '@/features/home/types/materidasar';
 
 const HiraganaPages = () => {
-  const [hiragana, setHiragana] = useState<any[]>([]);
+  const [hiragana, setHiragana] = useState<HiraganaData[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [updatedData, setUpdatedData] = useState(false);

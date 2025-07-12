@@ -131,7 +131,7 @@ const HomePage = () => {
                 </motion.button>
 
                 <p className="text-white/60 italic mt-6">
-                  "Akiramenakereba, yume wa kanarazu kanau."
+                  &quot;Akiramenakereba, yume wa kanarazu kanau.&quot;
                 </p>
               </div>
             </div>

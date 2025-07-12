@@ -9,7 +9,7 @@ import { useRouter } from 'next/navigation';
 import { IoBookOutline } from 'react-icons/io5';
 import { MdAccessTime, MdCheckCircle } from 'react-icons/md';
 import { TbLetterCase } from 'react-icons/tb';
-import { RiTranslate, RiQuestionLine } from 'react-icons/ri';
+import { RiTranslate } from 'react-icons/ri';
 import { BiText } from 'react-icons/bi';
 import { HiOutlineSparkles } from 'react-icons/hi';
 import { KataTanyaN5 } from '@/features/home/types/materin5';
