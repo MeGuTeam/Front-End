@@ -43,15 +43,13 @@ const RegisterPage = () => {
     setIsLoading(true);
     try {
       const response = await registerAuth(values.username, values.password);
-      console.log(response);
       if (response?.status === 200 || response?.status === 201) {
         toast.success('Register berhasil!');
         router.push('/login');
       } else {
         toast.error('Mendaftarkan Akun Gagal, Silahkan coba lagi.');
       }
-    } catch (error) {
-      console.error('Register Error: ', error);
+    } catch {
       toast.error('Terjadi kesalahan. Silahkan coba lagi');
     } finally {
       setIsLoading(false);
@@ -147,7 +145,7 @@ const RegisterPage = () => {
                               <FaLock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" />
                               <Input
                                 {...field}
-                                type={showPassword ? 'text' : 'password'}
+                                type={confirmPasswordShow ? 'text' : 'password'}
                                 placeholder="Konfirmasi Password Anda.."
                                 className="pl-10 bg-transparent border-white/20 text-white placeholder:text-muted-foreground focus:border-white/40 placeholder:text-sm lg:placeholder:text-base py-4.5 lg:py-6"
                                 disabled={isLoading}
@@ -155,7 +153,7 @@ const RegisterPage = () => {
                               <Button
                                 type="button"
                                 onClick={() =>
-                                  setShowPassword(!setConfirmPasswordShow)
+                                  setConfirmPasswordShow(!confirmPasswordShow)
                                 }
                                 className="absolute right-1 top-1/2 transform -translate-y-1/2 bg-transparent text-muted-foreground hover:text-white hover:bg-transparent"
                               >

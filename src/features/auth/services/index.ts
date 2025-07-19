@@ -12,7 +12,6 @@ import {
 export async function loginAuth(username: string, password: string) {
   try {
     const res = await api.post('/auth/login', { username, password });
-    console.log('Login register: ', res);
 
     const token = res.data.data.token;
     const userId = res.data.data.id;
@@ -30,7 +29,6 @@ export async function loginAuth(username: string, password: string) {
 export async function registerAuth(username: string, password: string) {
   try {
     const res = await api.post('/auth/register', { username, password });
-    console.log('Register Berhasil: ', res);
     return res;
   } catch (error) {
     console.error('Proses regist Anda Gagal', error);
@@ -55,8 +53,6 @@ export async function getUser() {
       removeUserId();
       throw new Error('Token expired');
     }
-
-    console.log('User ID:', userId);
 
     const res = await api.get(`/profile/${userId}`);
 

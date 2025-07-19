@@ -29,8 +29,6 @@ export function removeToken() {
 export function isTokenExpired(token: string): boolean {
   try {
     const decoded = jwtDecode<JwtPayload>(token);
-    console.log(token);
-    console.log(decoded);
     const now = Date.now() / 1000; // in seconds
     return decoded.exp < now;
   } catch (e) {

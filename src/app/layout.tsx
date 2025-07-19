@@ -1,10 +1,6 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
-import NavbarWrapper from './navbar-wrapper'; // perhatikan ini
-import AuthGuard from '@/features/shared/components/AuthGuard';
-
-// TODO: Jika tidak ada token user tidak bisa mengakses halaman kecuali /, /login, /register, dan redirect ke halaman login
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -31,13 +27,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <AuthGuard>
-          <NavbarWrapper />
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
           {children}
-        </AuthGuard>
       </body>
     </html>
   );

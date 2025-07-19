@@ -27,8 +27,6 @@ const HomePage = () => {
         setTracker((prev) => ({ ...prev, loading: true, error: null }));
 
         const data = await trackerHome();
-        console.log('Fetch Tracker', data);
-        console.log('detail fetch tracker', data.data.lastActivity);
 
         const { error, message, data: trackerData } = data;
 
@@ -84,6 +82,18 @@ const HomePage = () => {
     return tracker.lastActivity.href;
   };
 
+const convertTime = () => {
+  const iso = tracker.lastActivity?.lastProgress;
+  if (!iso) return "Data tidak ada";
+
+  const date = new Date(iso);
+  return new Intl.DateTimeFormat("id-ID", {
+    dateStyle: "full",
+    timeStyle: "short",
+    timeZone: "Asia/Jakarta",
+  }).format(date);
+};
+
   return (
     <main className="bg-black min-h-screen pb-12 pt-18">
       {/* Hero Section */}
@@ -109,7 +119,7 @@ const HomePage = () => {
                   </div>
                   {tracker.lastActivity && (
                     <p className="text-white/60 text-xs mt-1">
-                      Terakhir: {tracker.lastActivity.lastProgress}
+                      Terakhir: {convertTime()}
                     </p>
                   )}
                 </div>
@@ -138,7 +148,7 @@ const HomePage = () => {
 
             <div className="hidden md:block">
               <Image
-                src="/ImageForHome.jpg"
+                src="/anime.jpg"
                 alt="Ilustrasi belajar"
                 width={240}
                 height={240}

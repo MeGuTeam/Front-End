@@ -39,15 +39,13 @@ const LoginPage = () => {
     setIsLoading(true);
     try {
       const response = await loginAuth(values.username, values.password);
-      console.log(response);
       if (response?.status === 200 || response?.status === 201) {
         toast.success('Login berhasil!');
         router.push('/home');
       } else {
         toast.error('Login Gagal, Silahkan coba lagi.');
       }
-    } catch (error) {
-      console.error('Login Error: ', error);
+    } catch {
       toast.error('Terjadi kesalahan. Silahkan coba lagi');
     } finally {
       setIsLoading(false);

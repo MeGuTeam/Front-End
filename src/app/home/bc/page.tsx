@@ -30,9 +30,8 @@ const BasicConversationPages = () => {
       setLoading(true);
       const data = await getBasicConversation(setUpdatedData);
       setConversations(data);
-    } catch (err) {
+    } catch {
       setError('Data tidak ditemukan');
-      console.error(err);
     } finally {
       setLoading(false);
     }

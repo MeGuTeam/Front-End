@@ -28,7 +28,6 @@ const Navbar = () => {
       try {
         setIsLoading(true);
         const data = await getUser();
-        console.log('Data user:', data);
 
         setUser({
           username: data.data.username,
@@ -44,9 +43,6 @@ const Navbar = () => {
 
     fetchDataUser();
   }, [router]);
-
-  console.log(user);
-
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {

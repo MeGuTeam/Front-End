@@ -83,7 +83,6 @@ export const trackerKanjiN5 = async (
   setterUpdatedData: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
   try {
-    console.log('id kanji di api tracker:', kanjiId);
     const res = await api.post('/tracker/kanji', {
       kanji_id: kanjiId,
       status: currentStatus,

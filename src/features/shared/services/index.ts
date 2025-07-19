@@ -8,7 +8,6 @@ import {
 export const getAvatar = async () => {
   try {
     const res = await api.get('/avatar');
-    console.log('Respon', res);
     return res;
   } catch (e) {
     console.error('Gagal mengambil data', e);
@@ -38,7 +37,6 @@ export async function getUser(id: number) {
 export const postAvatar = async () => {
   try {
     const res = await api.post('/upload/avatar', {});
-    console.log('Respon', res);
     return res;
   } catch (e) {
     console.error('Gagal mengambil data',e);

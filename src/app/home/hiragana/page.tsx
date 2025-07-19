@@ -28,9 +28,8 @@ const HiraganaPages = () => {
       setLoading(true);
       const data = await getHiragana(setUpdatedData);
       setHiragana(data);
-    } catch (err) {
+    } catch {
       setError('Data tidak ditemukan');
-      console.error(err);
     } finally {
       setLoading(false);
     }

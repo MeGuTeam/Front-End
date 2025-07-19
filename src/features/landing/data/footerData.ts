@@ -30,7 +30,7 @@ export const aboutLinks: NavigationLink[] = [
 export const contactInfo: ContactInfo[] = [
   {
     type: 'email',
-    value: 'support@ikibannihongo.com',
+    value: 'support@megu.com',
     icon: React.createElement(FaEnvelope),
   },
   {
@@ -46,10 +46,9 @@ export const legalLinks: LegalLink[] = [
 ];
 
 export const brandInfo = {
-  name: 'IkibanNihongo',
+  name: 'MeGu',
   description:
     'Platform pembelajaran bahasa Jepang yang interaktif dan mudah dipahami. Mulai perjalanan belajar bahasa Jepang Anda bersama kami.',
   tagline: 'Made with ❤️ for Japanese learners',
   encouragement: 'がんばって！',
-  flag: '🇯🇵',
 };
