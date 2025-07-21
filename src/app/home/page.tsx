@@ -82,17 +82,17 @@ const HomePage = () => {
     return tracker.lastActivity.href;
   };
 
-const convertTime = () => {
-  const iso = tracker.lastActivity?.lastProgress;
-  if (!iso) return "Data tidak ada";
+  const convertTime = () => {
+    const iso = tracker.lastActivity?.lastProgress;
+    if (!iso) return 'Data tidak ada';
 
-  const date = new Date(iso);
-  return new Intl.DateTimeFormat("id-ID", {
-    dateStyle: "full",
-    timeStyle: "short",
-    timeZone: "Asia/Jakarta",
-  }).format(date);
-};
+    const date = new Date(iso);
+    return new Intl.DateTimeFormat('id-ID', {
+      dateStyle: 'full',
+      timeStyle: 'short',
+      timeZone: 'Asia/Jakarta',
+    }).format(date);
+  };
 
   return (
     <main className="bg-black min-h-screen pb-12 pt-18">

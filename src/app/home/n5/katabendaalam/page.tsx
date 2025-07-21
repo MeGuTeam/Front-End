@@ -23,44 +23,42 @@ const NounNaturalPage = () => {
   const [updating, setUpdating] = useState<number | null>(null);
   const router = useRouter();
 
-const fetchNounNatural = async (setUpdatedData: React.Dispatch<React.SetStateAction<boolean>>) => {
-  try {
-    setLoading(true);
-    const data = await getNounNatural(setUpdatedData);
-    setNounNatural(data || []);
-  } catch (e) {
-    setError('Data tidak ditemukan');
-    console.error(e);
-  } finally {
-    setLoading(false);
-  }
-};
+  const fetchNounNatural = async (
+    setUpdatedData: React.Dispatch<React.SetStateAction<boolean>>
+  ) => {
+    try {
+      setLoading(true);
+      const data = await getNounNatural(setUpdatedData);
+      setNounNatural(data || []);
+    } catch (e) {
+      setError('Data tidak ditemukan');
+      console.error(e);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-useEffect(() => {
-  if (updatedData === false) {
-    fetchNounNatural(setUpdatedData);
-    setLoading(false);
-  }
-}, [updatedData]);
+  useEffect(() => {
+    if (updatedData === false) {
+      fetchNounNatural(setUpdatedData);
+      setLoading(false);
+    }
+  }, [updatedData]);
 
-const handleNounNaturalClick = async (
-  naturalId: number,
-  currentStatus: boolean
-) => {
-  try {
-    setUpdating(naturalId);
-    await trackerNounNatural(
-      naturalId,
-      currentStatus,
-      setUpdatedData
-    );
-  } catch (e) {
-    console.error('Failed to update noun natural status: ', e);
-    setError('Gagal mengupdate status. Silakan coba lagi.');
-  } finally {
-    setUpdating(null);
-  }
-};
+  const handleNounNaturalClick = async (
+    naturalId: number,
+    currentStatus: boolean
+  ) => {
+    try {
+      setUpdating(naturalId);
+      await trackerNounNatural(naturalId, currentStatus, setUpdatedData);
+    } catch (e) {
+      console.error('Failed to update noun natural status: ', e);
+      setError('Gagal mengupdate status. Silakan coba lagi.');
+    } finally {
+      setUpdating(null);
+    }
+  };
 
   const completedCount = nounNatural.filter((p) => p.status).length;
   const progressPercentage =

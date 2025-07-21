@@ -23,44 +23,42 @@ const NounNumberPage = () => {
   const [updating, setUpdating] = useState<number | null>(null);
   const router = useRouter();
 
-  const fetchNounNumber = async (setUpdatedData: React.Dispatch<React.SetStateAction<boolean>>) => {
-  try {
-    setLoading(true);
-    const data = await getNounNumber(setUpdatedData);
-    setNounNumber(data || []);
-  } catch (e) {
-    setError('Data tidak ditemukan');
-    console.error(e);
-  } finally {
-    setLoading(false);
-  }
-};
+  const fetchNounNumber = async (
+    setUpdatedData: React.Dispatch<React.SetStateAction<boolean>>
+  ) => {
+    try {
+      setLoading(true);
+      const data = await getNounNumber(setUpdatedData);
+      setNounNumber(data || []);
+    } catch (e) {
+      setError('Data tidak ditemukan');
+      console.error(e);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-useEffect(() => {
-  if (updatedData === false) {
-    fetchNounNumber(setUpdatedData);
-    setLoading(false);
-  }
-}, [updatedData]);
+  useEffect(() => {
+    if (updatedData === false) {
+      fetchNounNumber(setUpdatedData);
+      setLoading(false);
+    }
+  }, [updatedData]);
 
-const handleNounNumberClick = async (
-  numberId: number,
-  currentStatus: boolean
-) => {
-  try {
-    setUpdating(numberId);
-    await trackerNounNumber(
-      numberId,
-      currentStatus,
-      setUpdatedData
-    );
-  } catch (e) {
-    console.error('Failed to update noun number status: ', e);
-    setError('Gagal mengupdate status. Silakan coba lagi.');
-  } finally {
-    setUpdating(null);
-  }
-};
+  const handleNounNumberClick = async (
+    numberId: number,
+    currentStatus: boolean
+  ) => {
+    try {
+      setUpdating(numberId);
+      await trackerNounNumber(numberId, currentStatus, setUpdatedData);
+    } catch (e) {
+      console.error('Failed to update noun number status: ', e);
+      setError('Gagal mengupdate status. Silakan coba lagi.');
+    } finally {
+      setUpdating(null);
+    }
+  };
 
   const completedCount = nounNumber.filter((p) => p.status).length;
   const progressPercentage =

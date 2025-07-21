@@ -23,44 +23,42 @@ const NounKosoadoPage = () => {
   const [updating, setUpdating] = useState<number | null>(null);
   const router = useRouter();
 
-  const fetchNounKosoado = async (setUpdatedData: React.Dispatch<React.SetStateAction<boolean>>) => {
-  try {
-    setLoading(true);
-    const data = await getNounKosoado(setUpdatedData);
-    setNounKosoado(data || []);
-  } catch (e) {
-    setError('Data tidak ditemukan');
-    console.error(e);
-  } finally {
-    setLoading(false);
-  }
-};
+  const fetchNounKosoado = async (
+    setUpdatedData: React.Dispatch<React.SetStateAction<boolean>>
+  ) => {
+    try {
+      setLoading(true);
+      const data = await getNounKosoado(setUpdatedData);
+      setNounKosoado(data || []);
+    } catch (e) {
+      setError('Data tidak ditemukan');
+      console.error(e);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-useEffect(() => {
-  if (updatedData === false) {
-    fetchNounKosoado(setUpdatedData);
-    setLoading(false);
-  }
-}, [updatedData]);
+  useEffect(() => {
+    if (updatedData === false) {
+      fetchNounKosoado(setUpdatedData);
+      setLoading(false);
+    }
+  }, [updatedData]);
 
-const handleNounKosoadoClick = async (
-  colorId: number,
-  currentStatus: boolean
-) => {
-  try {
-    setUpdating(colorId);
-    await trackerNounKosoado(
-      colorId,
-      currentStatus,
-      setUpdatedData
-    );
-  } catch (e) {
-    console.error('Failed to update noun kosoado status: ', e);
-    setError('Gagal mengupdate status. Silakan coba lagi.');
-  } finally {
-    setUpdating(null);
-  }
-};
+  const handleNounKosoadoClick = async (
+    colorId: number,
+    currentStatus: boolean
+  ) => {
+    try {
+      setUpdating(colorId);
+      await trackerNounKosoado(colorId, currentStatus, setUpdatedData);
+    } catch (e) {
+      console.error('Failed to update noun kosoado status: ', e);
+      setError('Gagal mengupdate status. Silakan coba lagi.');
+    } finally {
+      setUpdating(null);
+    }
+  };
 
   const completedCount = nounKosoado.filter((p) => p.status).length;
   const progressPercentage =
@@ -112,9 +110,7 @@ const handleNounKosoadoClick = async (
                 </button>
               </div>
               <span className="text-white/50">&gt;</span>
-              <span className="text-blue-400 font-medium">
-                Kata Kosoado N5
-              </span>
+              <span className="text-blue-400 font-medium">Kata Kosoado N5</span>
             </div>
           </div>
 

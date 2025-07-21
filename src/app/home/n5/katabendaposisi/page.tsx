@@ -23,44 +23,42 @@ const NounPositionPage = () => {
   const [updating, setUpdating] = useState<number | null>(null);
   const router = useRouter();
 
- const fetchNounPosition = async (setUpdatedData: React.Dispatch<React.SetStateAction<boolean>>) => {
-  try {
-    setLoading(true);
-    const data = await getNounPosition(setUpdatedData);
-    setNounPosition(data || []);
-  } catch (e) {
-    setError('Data tidak ditemukan');
-    console.error(e);
-  } finally {
-    setLoading(false);
-  }
-};
+  const fetchNounPosition = async (
+    setUpdatedData: React.Dispatch<React.SetStateAction<boolean>>
+  ) => {
+    try {
+      setLoading(true);
+      const data = await getNounPosition(setUpdatedData);
+      setNounPosition(data || []);
+    } catch (e) {
+      setError('Data tidak ditemukan');
+      console.error(e);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-useEffect(() => {
-  if (updatedData === false) {
-    fetchNounPosition(setUpdatedData);
-    setLoading(false);
-  }
-}, [updatedData]);
+  useEffect(() => {
+    if (updatedData === false) {
+      fetchNounPosition(setUpdatedData);
+      setLoading(false);
+    }
+  }, [updatedData]);
 
-const handleNounPositionClick = async (
-  positionId: number,
-  currentStatus: boolean
-) => {
-  try {
-    setUpdating(positionId);
-    await trackerNounPosition(
-      positionId,
-      currentStatus,
-      setUpdatedData
-    );
-  } catch (e) {
-    console.error('Failed to update noun position status: ', e);
-    setError('Gagal mengupdate status. Silakan coba lagi.');
-  } finally {
-    setUpdating(null);
-  }
-};
+  const handleNounPositionClick = async (
+    positionId: number,
+    currentStatus: boolean
+  ) => {
+    try {
+      setUpdating(positionId);
+      await trackerNounPosition(positionId, currentStatus, setUpdatedData);
+    } catch (e) {
+      console.error('Failed to update noun position status: ', e);
+      setError('Gagal mengupdate status. Silakan coba lagi.');
+    } finally {
+      setUpdating(null);
+    }
+  };
 
   const completedCount = nounPosition.filter((p) => p.status).length;
   const progressPercentage =
@@ -112,9 +110,7 @@ const handleNounPositionClick = async (
                 </button>
               </div>
               <span className="text-white/50">&gt;</span>
-              <span className="text-blue-400 font-medium">
-                Kata Posisi N5
-              </span>
+              <span className="text-blue-400 font-medium">Kata Posisi N5</span>
             </div>
           </div>
 

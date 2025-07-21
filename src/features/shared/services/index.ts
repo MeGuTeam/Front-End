@@ -39,6 +39,6 @@ export const postAvatar = async () => {
     const res = await api.post('/upload/avatar', {});
     return res;
   } catch (e) {
-    console.error('Gagal mengambil data',e);
+    console.error('Gagal mengambil data', e);
   }
 };

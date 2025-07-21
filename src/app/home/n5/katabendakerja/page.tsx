@@ -23,44 +23,42 @@ const NounWorkPage = () => {
   const [updating, setUpdating] = useState<number | null>(null);
   const router = useRouter();
 
-const fetchNounWork = async (setUpdatedData: React.Dispatch<React.SetStateAction<boolean>>) => {
-  try {
-    setLoading(true);
-    const data = await getNounWork(setUpdatedData);
-    setNounWork(data || []);
-  } catch (e) {
-    setError('Data tidak ditemukan');
-    console.error(e);
-  } finally {
-    setLoading(false);
-  }
-};
+  const fetchNounWork = async (
+    setUpdatedData: React.Dispatch<React.SetStateAction<boolean>>
+  ) => {
+    try {
+      setLoading(true);
+      const data = await getNounWork(setUpdatedData);
+      setNounWork(data || []);
+    } catch (e) {
+      setError('Data tidak ditemukan');
+      console.error(e);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-useEffect(() => {
-  if (updatedData === false) {
-    fetchNounWork(setUpdatedData);
-    setLoading(false);
-  }
-}, [updatedData]);
+  useEffect(() => {
+    if (updatedData === false) {
+      fetchNounWork(setUpdatedData);
+      setLoading(false);
+    }
+  }, [updatedData]);
 
-const handleNounWorkClick = async (
-  workId: number,
-  currentStatus: boolean
-) => {
-  try {
-    setUpdating(workId);
-    await trackerNounWork(
-      workId,
-      currentStatus,
-      setUpdatedData
-    );
-  } catch (e) {
-    console.error('Failed to update noun work status: ', e);
-    setError('Gagal mengupdate status. Silakan coba lagi.');
-  } finally {
-    setUpdating(null);
-  }
-};
+  const handleNounWorkClick = async (
+    workId: number,
+    currentStatus: boolean
+  ) => {
+    try {
+      setUpdating(workId);
+      await trackerNounWork(workId, currentStatus, setUpdatedData);
+    } catch (e) {
+      console.error('Failed to update noun work status: ', e);
+      setError('Gagal mengupdate status. Silakan coba lagi.');
+    } finally {
+      setUpdating(null);
+    }
+  };
 
   const completedCount = nounWork.filter((p) => p.status).length;
   const progressPercentage =

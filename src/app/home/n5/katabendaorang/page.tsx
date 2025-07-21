@@ -23,44 +23,42 @@ const NounPeoplePage = () => {
   const [updating, setUpdating] = useState<number | null>(null);
   const router = useRouter();
 
-const fetchNounPeople = async (setUpdatedData: React.Dispatch<React.SetStateAction<boolean>>) => {
-  try {
-    setLoading(true);
-    const data = await getNounPeople(setUpdatedData);
-    setNounPeople(data || []);
-  } catch (e) {
-    setError('Data tidak ditemukan');
-    console.error(e);
-  } finally {
-    setLoading(false);
-  }
-};
+  const fetchNounPeople = async (
+    setUpdatedData: React.Dispatch<React.SetStateAction<boolean>>
+  ) => {
+    try {
+      setLoading(true);
+      const data = await getNounPeople(setUpdatedData);
+      setNounPeople(data || []);
+    } catch (e) {
+      setError('Data tidak ditemukan');
+      console.error(e);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-useEffect(() => {
-  if (updatedData === false) {
-    fetchNounPeople(setUpdatedData);
-    setLoading(false);
-  }
-}, [updatedData]);
+  useEffect(() => {
+    if (updatedData === false) {
+      fetchNounPeople(setUpdatedData);
+      setLoading(false);
+    }
+  }, [updatedData]);
 
-const handleNounPeopleClick = async (
-  peopleId: number,
-  currentStatus: boolean
-) => {
-  try {
-    setUpdating(peopleId);
-    await trackerNounPeople(
-      peopleId,
-      currentStatus,
-      setUpdatedData
-    );
-  } catch (e) {
-    console.error('Failed to update noun people status: ', e);
-    setError('Gagal mengupdate status. Silakan coba lagi.');
-  } finally {
-    setUpdating(null);
-  }
-};
+  const handleNounPeopleClick = async (
+    peopleId: number,
+    currentStatus: boolean
+  ) => {
+    try {
+      setUpdating(peopleId);
+      await trackerNounPeople(peopleId, currentStatus, setUpdatedData);
+    } catch (e) {
+      console.error('Failed to update noun people status: ', e);
+      setError('Gagal mengupdate status. Silakan coba lagi.');
+    } finally {
+      setUpdating(null);
+    }
+  };
 
   const completedCount = nounPeople.filter((p) => p.status).length;
   const progressPercentage =
@@ -112,9 +110,7 @@ const handleNounPeopleClick = async (
                 </button>
               </div>
               <span className="text-white/50">&gt;</span>
-              <span className="text-blue-400 font-medium">
-                Kata People N5
-              </span>
+              <span className="text-blue-400 font-medium">Kata People N5</span>
             </div>
           </div>
 

@@ -23,44 +23,42 @@ const NounMediaPage = () => {
   const [updating, setUpdating] = useState<number | null>(null);
   const router = useRouter();
 
-  const fetchNounMedia = async (setUpdatedData: React.Dispatch<React.SetStateAction<boolean>>) => {
-  try {
-    setLoading(true);
-    const data = await getNounMedia(setUpdatedData);
-    setNounMedia(data || []);
-  } catch (e) {
-    setError('Data tidak ditemukan');
-    console.error(e);
-  } finally {
-    setLoading(false);
-  }
-};
+  const fetchNounMedia = async (
+    setUpdatedData: React.Dispatch<React.SetStateAction<boolean>>
+  ) => {
+    try {
+      setLoading(true);
+      const data = await getNounMedia(setUpdatedData);
+      setNounMedia(data || []);
+    } catch (e) {
+      setError('Data tidak ditemukan');
+      console.error(e);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-useEffect(() => {
-  if (updatedData === false) {
-    fetchNounMedia(setUpdatedData);
-    setLoading(false);
-  }
-}, [updatedData]);
+  useEffect(() => {
+    if (updatedData === false) {
+      fetchNounMedia(setUpdatedData);
+      setLoading(false);
+    }
+  }, [updatedData]);
 
-const handleNounMediaClick = async (
-  mediaId: number,
-  currentStatus: boolean
-) => {
-  try {
-    setUpdating(mediaId);
-    await trackerNounMedia(
-      mediaId,
-      currentStatus,
-      setUpdatedData
-    );
-  } catch (e) {
-    console.error('Failed to update noun media status: ', e);
-    setError('Gagal mengupdate status. Silakan coba lagi.');
-  } finally {
-    setUpdating(null);
-  }
-};
+  const handleNounMediaClick = async (
+    mediaId: number,
+    currentStatus: boolean
+  ) => {
+    try {
+      setUpdating(mediaId);
+      await trackerNounMedia(mediaId, currentStatus, setUpdatedData);
+    } catch (e) {
+      console.error('Failed to update noun media status: ', e);
+      setError('Gagal mengupdate status. Silakan coba lagi.');
+    } finally {
+      setUpdating(null);
+    }
+  };
 
   const completedCount = nounMedia.filter((p) => p.status).length;
   const progressPercentage =

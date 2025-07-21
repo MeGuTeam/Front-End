@@ -107,15 +107,14 @@ const Navbar = () => {
               disabled={isLoading}
             >
               <div className="relative w-8 h-8">
-<Image
-  src={user.avatar || '/defaultprofilepicture.png'}
-  alt="User Avatar"
-  width={32}
-  height={32}
-  className="rounded-full object-cover"
-  loading="lazy"
-/>
-
+                <Image
+                  src={user.avatar || '/defaultprofilepicture.png'}
+                  alt="User Avatar"
+                  width={32}
+                  height={32}
+                  className="rounded-full object-cover"
+                  loading="lazy"
+                />
               </div>
               <span className="text-white text-sm font-medium hidden sm:block">
                 {isLoading ? 'Loading...' : user.username}

@@ -23,44 +23,42 @@ const NounSchoolPage = () => {
   const [updating, setUpdating] = useState<number | null>(null);
   const router = useRouter();
 
-const fetchNounSchool = async (setUpdatedData: React.Dispatch<React.SetStateAction<boolean>>) => {
-  try {
-    setLoading(true);
-    const data = await getNounSchool(setUpdatedData);
-    setNounSchool(data || []);
-  } catch (e) {
-    setError('Data tidak ditemukan');
-    console.error(e);
-  } finally {
-    setLoading(false);
-  }
-};
+  const fetchNounSchool = async (
+    setUpdatedData: React.Dispatch<React.SetStateAction<boolean>>
+  ) => {
+    try {
+      setLoading(true);
+      const data = await getNounSchool(setUpdatedData);
+      setNounSchool(data || []);
+    } catch (e) {
+      setError('Data tidak ditemukan');
+      console.error(e);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-useEffect(() => {
-  if (updatedData === false) {
-    fetchNounSchool(setUpdatedData);
-    setLoading(false);
-  }
-}, [updatedData]);
+  useEffect(() => {
+    if (updatedData === false) {
+      fetchNounSchool(setUpdatedData);
+      setLoading(false);
+    }
+  }, [updatedData]);
 
-const handleNounSchoolClick = async (
-  schoolId: number,
-  currentStatus: boolean
-) => {
-  try {
-    setUpdating(schoolId);
-    await trackerNounSchool(
-      schoolId,
-      currentStatus,
-      setUpdatedData
-    );
-  } catch (e) {
-    console.error('Failed to update noun school status: ', e);
-    setError('Gagal mengupdate status. Silakan coba lagi.');
-  } finally {
-    setUpdating(null);
-  }
-};
+  const handleNounSchoolClick = async (
+    schoolId: number,
+    currentStatus: boolean
+  ) => {
+    try {
+      setUpdating(schoolId);
+      await trackerNounSchool(schoolId, currentStatus, setUpdatedData);
+    } catch (e) {
+      console.error('Failed to update noun school status: ', e);
+      setError('Gagal mengupdate status. Silakan coba lagi.');
+    } finally {
+      setUpdating(null);
+    }
+  };
 
   const completedCount = nounSchool.filter((p) => p.status).length;
   const progressPercentage =
@@ -112,9 +110,7 @@ const handleNounSchoolClick = async (
                 </button>
               </div>
               <span className="text-white/50">&gt;</span>
-              <span className="text-blue-400 font-medium">
-                Kata Sekolah N5
-              </span>
+              <span className="text-blue-400 font-medium">Kata Sekolah N5</span>
             </div>
           </div>
 

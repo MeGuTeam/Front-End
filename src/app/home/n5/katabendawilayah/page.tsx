@@ -23,44 +23,42 @@ const NounRegionPage = () => {
   const [updating, setUpdating] = useState<number | null>(null);
   const router = useRouter();
 
-const fetchNounRegion = async (setUpdatedData: React.Dispatch<React.SetStateAction<boolean>>) => {
-  try {
-    setLoading(true);
-    const data = await getNounRegion(setUpdatedData);
-    setNounRegion(data || []);
-  } catch (e) {
-    setError('Data tidak ditemukan');
-    console.error(e);
-  } finally {
-    setLoading(false);
-  }
-};
+  const fetchNounRegion = async (
+    setUpdatedData: React.Dispatch<React.SetStateAction<boolean>>
+  ) => {
+    try {
+      setLoading(true);
+      const data = await getNounRegion(setUpdatedData);
+      setNounRegion(data || []);
+    } catch (e) {
+      setError('Data tidak ditemukan');
+      console.error(e);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-useEffect(() => {
-  if (updatedData === false) {
-    fetchNounRegion(setUpdatedData);
-    setLoading(false);
-  }
-}, [updatedData]);
+  useEffect(() => {
+    if (updatedData === false) {
+      fetchNounRegion(setUpdatedData);
+      setLoading(false);
+    }
+  }, [updatedData]);
 
-const handleNounRegionClick = async (
-  regionId: number,
-  currentStatus: boolean
-) => {
-  try {
-    setUpdating(regionId);
-    await trackerNounRegion(
-      regionId,
-      currentStatus,
-      setUpdatedData
-    );
-  } catch (e) {
-    console.error('Failed to update noun region status: ', e);
-    setError('Gagal mengupdate status. Silakan coba lagi.');
-  } finally {
-    setUpdating(null);
-  }
-};
+  const handleNounRegionClick = async (
+    regionId: number,
+    currentStatus: boolean
+  ) => {
+    try {
+      setUpdating(regionId);
+      await trackerNounRegion(regionId, currentStatus, setUpdatedData);
+    } catch (e) {
+      console.error('Failed to update noun region status: ', e);
+      setError('Gagal mengupdate status. Silakan coba lagi.');
+    } finally {
+      setUpdating(null);
+    }
+  };
 
   const completedCount = nounRegion.filter((p) => p.status).length;
   const progressPercentage =
@@ -112,9 +110,7 @@ const handleNounRegionClick = async (
                 </button>
               </div>
               <span className="text-white/50">&gt;</span>
-              <span className="text-blue-400 font-medium">
-                Kata Wilayah N5
-              </span>
+              <span className="text-blue-400 font-medium">Kata Wilayah N5</span>
             </div>
           </div>
 

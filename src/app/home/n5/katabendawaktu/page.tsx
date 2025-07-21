@@ -23,44 +23,42 @@ const NounTimePage = () => {
   const [updating, setUpdating] = useState<number | null>(null);
   const router = useRouter();
 
-const fetchNounTime = async (setUpdatedData: React.Dispatch<React.SetStateAction<boolean>>) => {
-  try {
-    setLoading(true);
-    const data = await getNounTime(setUpdatedData);
-    setNounTime(data || []);
-  } catch (e) {
-    setError('Data tidak ditemukan');
-    console.error(e);
-  } finally {
-    setLoading(false);
-  }
-};
+  const fetchNounTime = async (
+    setUpdatedData: React.Dispatch<React.SetStateAction<boolean>>
+  ) => {
+    try {
+      setLoading(true);
+      const data = await getNounTime(setUpdatedData);
+      setNounTime(data || []);
+    } catch (e) {
+      setError('Data tidak ditemukan');
+      console.error(e);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-useEffect(() => {
-  if (updatedData === false) {
-    fetchNounTime(setUpdatedData);
-    setLoading(false);
-  }
-}, [updatedData]);
+  useEffect(() => {
+    if (updatedData === false) {
+      fetchNounTime(setUpdatedData);
+      setLoading(false);
+    }
+  }, [updatedData]);
 
-const handleNounTimeClick = async (
-timeId: number,
-  currentStatus: boolean
-) => {
-  try {
-    setUpdating(timeId);
-    await trackerNounTime(
-      timeId,
-      currentStatus,
-      setUpdatedData
-    );
-  } catch (e) {
-    console.error('Failed to update noun time status: ', e);
-    setError('Gagal mengupdate status. Silakan coba lagi.');
-  } finally {
-    setUpdating(null);
-  }
-};
+  const handleNounTimeClick = async (
+    timeId: number,
+    currentStatus: boolean
+  ) => {
+    try {
+      setUpdating(timeId);
+      await trackerNounTime(timeId, currentStatus, setUpdatedData);
+    } catch (e) {
+      console.error('Failed to update noun time status: ', e);
+      setError('Gagal mengupdate status. Silakan coba lagi.');
+    } finally {
+      setUpdating(null);
+    }
+  };
 
   const completedCount = nounTime.filter((p) => p.status).length;
   const progressPercentage =
