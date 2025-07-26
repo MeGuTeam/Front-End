@@ -40,6 +40,7 @@ import {
 
 // Import hooks
 import { useTeamSlider } from '../features/landing/hooks/useTeamSlider';
+import { getToken } from '@/features/auth/lib/token';
 
 const LandingPage = () => {
   const router = useRouter();
@@ -61,6 +62,14 @@ const LandingPage = () => {
   };
 
   const currentYear = new Date().getFullYear();
+
+  const navigation = () => {
+    if (!getToken()) {
+      return router.push("/login");
+    }
+
+    router.push("/home");
+  }
 
   return (
     <div className="min-h-screen bg-black text-white overflow-x-hidden">
@@ -102,7 +111,7 @@ const LandingPage = () => {
               variants={buttonVariants}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              onClick={() => router.push('/login')}
+              onClick={navigation}
             >
               <span className="relative z-10">Mulai Belajar Sekarang</span>
             </motion.button>
@@ -201,7 +210,7 @@ const LandingPage = () => {
           </motion.div>
 
           {/* Desktop Grid */}
-          <div className="hidden lg:grid lg:grid-cols-2 xl:grid-cols-4 gap-6">
+          <div className="hidden lg:flex justify-center gap-12">
             {teamMembers.map((member) => (
               <motion.div
                 key={member.id}
@@ -209,6 +218,7 @@ const LandingPage = () => {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
+                className='lg:w-96'
               >
                 <div className="bg-transparent overflow-hidden relative backdrop-blur-lg rounded-2xl p-6 border border-white/20 hover:border-white/30 transition-all duration-300 group h-full">
                   <div className="border-t border-white/10 w-[25rem] absolute rotate-140 bottom-52 -left-12 z-10"></div>

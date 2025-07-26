@@ -7,7 +7,6 @@ import {
   FaUser,
   FaSpinner,
   FaHome,
-  FaChevronRight,
   FaLock,
   FaEye,
   FaEyeSlash,
