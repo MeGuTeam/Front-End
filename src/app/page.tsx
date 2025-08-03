@@ -65,11 +65,11 @@ const LandingPage = () => {
 
   const navigation = () => {
     if (!getToken()) {
-      return router.push("/login");
+      return router.push('/login');
     }
 
-    router.push("/home");
-  }
+    router.push('/home');
+  };
 
   return (
     <div className="min-h-screen bg-black text-white overflow-x-hidden">
@@ -218,7 +218,7 @@ const LandingPage = () => {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                className='lg:w-96'
+                className="lg:w-96"
               >
                 <div className="bg-transparent overflow-hidden relative backdrop-blur-lg rounded-2xl p-6 border border-white/20 hover:border-white/30 transition-all duration-300 group h-full">
                   <div className="border-t border-white/10 w-[25rem] absolute rotate-140 bottom-52 -left-12 z-10"></div>

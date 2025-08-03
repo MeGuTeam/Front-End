@@ -141,23 +141,23 @@ const UserProfile = () => {
   return (
     <div className="bg-black min-h-screen pt-18 pb-12">
       <div className="container mx-auto px-4 pb-8">
-          <div className="flex gap-2 items-center mb-4">
-            <FaHome className="w-5 h-5 text-blue-400" />
-            <div className="flex gap-1 text-sm">
-              <div>
-                <button
-                  onClick={() => router.push('/home')}
-                  className="hover:cursor-pointer text-white hover:text-blue-400 cursor-pointer transition-colors"
-                >
-                  Home
-                </button>
-              </div>
-              <span className="text-white/50">&gt;</span>
-              <span className="text-blue-400 font-medium hover:cursor-pointer">
-                Percakapan Dasar
-              </span>
+        <div className="flex gap-2 items-center mb-4">
+          <FaHome className="w-5 h-5 text-blue-400" />
+          <div className="flex gap-1 text-sm">
+            <div>
+              <button
+                onClick={() => router.push('/home')}
+                className="hover:cursor-pointer text-white hover:text-blue-400 cursor-pointer transition-colors"
+              >
+                Home
+              </button>
             </div>
+            <span className="text-white/50">&gt;</span>
+            <span className="text-blue-400 font-medium hover:cursor-pointer">
+              Percakapan Dasar
+            </span>
           </div>
+        </div>
 
         <header className="mb-8">
           <h1 className="text-white text-3xl font-semibold mb-3">
