@@ -1,11 +1,9 @@
 import api from '@/features/shared/lib/axios';
 
 export async function getParticle(
-  setterUpdatedData: React.Dispatch<React.SetStateAction<boolean>>
 ) {
   try {
     const res = await api.get('/particle');
-    setterUpdatedData(true);
     return res.data.data;
   } catch (e) {
     console.error(

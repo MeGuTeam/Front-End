@@ -12,14 +12,12 @@ export const trackerHome = async () => {
 export const trackerParticle = async (
   id: number,
   status: boolean,
-  setterUpdatedData: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
   try {
     const res = await api.post('/tracker/particle', {
       particle_id: id,
       status: status,
     });
-    setterUpdatedData(false);
     return res;
   } catch (e) {
     console.error('Operasi perbaharuan data gagal: ', e);
